@@ -9,25 +9,29 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var items = [];
 
 app.get("/", function(req, res) {              //(request, response
-      var d = new Date();
-      var dayName = days[d.getDay()];
+      var today = new Date();
 
-      // var today = new Date();  
-      // var day = "";
-      // if(today.getDay() == 6 || today.getDay() == 0)
-      // {
-      //       day="Weekend";
-      // }
-      // else
-      // {
-      //       day="Weekday";
-      // }
+      var options ={
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+      };
 
-      res.render('list', {kindOfDay: dayName});
+      var day = today.toLocaleDateString("en-US", options);
+
+      res.render('list', {kindOfDay: day, newListItem: items});
 });
 
+app.post("/", function(req, res) {
+      var item = req.body.newItem;
+      items.push(item);
+
+      res.redirect("/");
+});
 
 app.listen(3000, function() {
       console.log("Server started on port 3000.")
