@@ -3,10 +3,10 @@
 //return an object containing all information about this module
 
 
-module.exports.getDate = function () {
-      let today = new Date();
+exports.getDate = function () {
+      const today = new Date();
 
-      let options ={
+      const options = {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
@@ -16,10 +16,10 @@ module.exports.getDate = function () {
       return day = today.toLocaleDateString("en-US", options);
 }
 
-module.exports.getDay = function () {
-      let today = new Date();
+exports.getDay = function () {
+      const today = new Date();
 
-      let options ={
+      const options = {
             weekday: 'long',
       };
 

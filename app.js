@@ -12,11 +12,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
 
-let items = [];
+const items = [];
 workItems=[];
 
 app.get("/", function(req, res) {              //(request, response
-      let day = date.getDay();
+      const day = date.getDay();
 
       res.render('list', {listTitle: day, newListItem: items});
 });
