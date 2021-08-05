@@ -3,9 +3,7 @@
 //return an object containing all information about this module
 
 
-module.exports.getDate = getDate;
-
-function getDate() {
+module.exports.getDate = function () {
       let today = new Date();
 
       let options ={
@@ -18,8 +16,7 @@ function getDate() {
       return day = today.toLocaleDateString("en-US", options);
 }
 
-module.exports.getDay = getDay;
-function getDay() {
+module.exports.getDay = function () {
       let today = new Date();
 
       let options ={
